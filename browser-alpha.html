@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ChickenChickenCome</title>
+
+<meta name="theme-color" content="#0f1117">
+<link rel="manifest" href="manifest.json">
+
+<style>
+
+:root{
+  --bg:#0f1117;
+  --card:#1a1d29;
+  --text:white;
+  --button:#4f7cff;
+}
+
+.light{
+  --bg:#f4f4f4;
+  --card:white;
+  --text:black;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  overflow-x:hidden;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.container{
+  width:100%;
+  max-width:600px;
+  padding:20px;
+  text-align:center;
+}
+
+.theme{
+  border:none;
+  padding:10px 15px;
+  border-radius:999px;
+  background:var(--card);
+  color:var(--text);
+  margin-bottom:20px;
+  cursor:pointer;
+}
+
+.logo{
+  font-size:70px;
+}
+
+.title{
+  font-size:clamp(24px,7vw,40px);
+  font-weight:bold;
+  margin:15px 0 25px;
+  white-space:nowrap;
+}
+
+.search{
+  display:flex;
+  background:var(--card);
+  border-radius:999px;
+  padding:6px;
+}
+
+.search input{
+  flex:1;
+  border:none;
+  background:none;
+  outline:none;
+  color:var(--text);
+  padding:14px;
+}
+
+.search button{
+  border:none;
+  background:var(--button);
+  color:white;
+  padding:12px 18px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.provider{
+  margin-top:15px;
+}
+
+.provider select{
+  width:220px;
+  padding:10px;
+  border:none;
+  border-radius:20px;
+  background:var(--card);
+  color:var(--text);
+}
+
+.footer{
+  margin-top:25px;
+  opacity:.7;
+  font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<button class="theme" id="themeBtn" onclick="toggleTheme()">
+🌙 Dark Mode
+</button>
+
+<div class="logo">🐔</div>
+
+<div class="title">
+ChickenChickenCome
+</div>
+
+<div class="search">
+
+<input
+id="query"
+placeholder="Search the web..."
+onkeydown="if(event.key==='Enter')search()">
+
+<button onclick="search()">
+Search
+</button>
+
+</div>
+
+<div class="provider">
+
+<select id="provider">
+<option value="google">Google</option>
+<option value="bing">Bing</option>
+<option value="duck">DuckDuckGo</option>
+<option value="brave">Brave Search</option>
+</select>
+
+</div>
+
+<div class="footer">
+Powered by NeonSamurai Industries™
+</div>
+
+</div>
+
+<script>
+
+function search(){
+
+ let q=document.getElementById("query").value;
+ let p=document.getElementById("provider").value;
+
+ if(!q)return;
+
+ let url="";
+
+ if(p==="google")
+ url="https://google.com/search?q="+encodeURIComponent(q);
+
+ if(p==="bing")
+ url="https://bing.com/search?q="+encodeURIComponent(q);
+
+ if(p==="duck")
+ url="https://duckduckgo.com/?q="+encodeURIComponent(q);
+
+ if(p==="brave")
+ url="https://search.brave.com/search?q="+encodeURIComponent(q);
+
+ location.href=url;
+}
+
+function toggleTheme(){
+
+ document.body.classList.toggle("light");
+
+ let btn=document.getElementById("themeBtn");
+
+ if(document.body.classList.contains("light")){
+   btn.innerHTML="☀️ Light Mode";
+ }else{
+   btn.innerHTML="🌙 Dark Mode";
+ }
+}
+
+</script>
+
+</body>
+</html>
