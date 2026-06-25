@@ -161,10 +161,10 @@ Search
 <div class="provider">
 
 <select id="provider">
-<option value="google">Google</option>
-<option value="bing">Bing</option>
 <option value="duck">DuckDuckGo</option>
 <option value="brave">Brave Search</option>
+<option value="startpage">Startpage</option>
+<option value="bing">Bing</option>
 </select>
 
 </div>
@@ -189,8 +189,8 @@ function search(){
 
  let url="";
 
- if(p==="google")
- url="https://www.google.com/search?q="+encodeURIComponent(q);
+ if(p==="startpage")
+url="https://www.startpage.com/search?q="+encodeURIComponent(q);
 
  if(p==="bing")
  url="https://www.bing.com/search?q="+encodeURIComponent(q);
